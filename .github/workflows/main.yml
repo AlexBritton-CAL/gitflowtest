@@ -14,16 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: az login
-      run: |
-        az login --tenant ${{ secrets.TENANT }} \
-          --service-principal \
-          -u ${{ secrets.APPID }} \
-          -p ${{ secrets.PASSWORD }} >/dev/null
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    
     - uses: hashicorp/setup-terraform@v1
       # with:
       #   terraform_version: 0.13.0
