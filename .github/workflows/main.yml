@@ -21,7 +21,7 @@ jobs:
         #creds: '${{ secrets.AZURE_CREDENTIALS }}'
         creds: '{"clientId":"${{ secrets.appId }}","clientSecret":"${{ secrets.password }}","subscriptionId":"ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2","tenantId":"${{ secrets.tenant }}"}'
     
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
     - uses: actions/checkout@v2
 
     - uses: hashicorp/setup-terraform@v1
