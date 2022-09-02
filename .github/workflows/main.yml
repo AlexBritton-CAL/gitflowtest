@@ -13,28 +13,21 @@ jobs:
         working-directory: ./terraform
     runs-on: ubuntu-latest
 
+    env:
+      ARM_CLIENT_ID: ${{ secrets.APPID }}
+      ARM_CLIENT_SECRET: ${{ secrets.PASSWORD }}
+      ARM_TENANT_ID: "9c29d70b-9e7a-44d5-abe2-7e53df86502f"
+      ARM_SUBSCRIPTION_ID: "ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2"
+      ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+      STORAGE_ACCOUNT: "terraformstateab2021"
+
     steps:
-
-    - name: Log in with Azure
-      uses: azure/login@v1
-      with:
-        #creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        creds: '{"clientId":"${{ secrets.appId }}","clientSecret":"${{ secrets.password }}","subscriptionId":"ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2","tenantId":"${{ secrets.tenant }}"}'
-    
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
     - uses: hashicorp/setup-terraform@v1
-      # with:
-      #   terraform_version: 0.13.0
-
-    - name: Tests
-      run: |
-        ls -l
-        terraform --version
-        cat ../config/prod_backend.tf
-        export ARM_ACCESS_KEY="${{ secrets.ARM_ACCESS_KEY }}"
-
+      with:
+        terraform_version: 0.13.0
+        
     - name: terraform-fmt
       id: fmt
       run: terraform fmt
@@ -43,11 +36,10 @@ jobs:
     # Runs a single command using the runners shell
     - name: terraform-init
       id: init
-      # env:
-      #   ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
-      #   STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
-      #run: terraform init -backend-config="storage_account_name=$STORAGE_ACCOUNT"
-      run: terraform init -upgrade -backend-config=../config/prod_backend.tf -backend-config="key=prod_gitflowtest.tfstate"
+      env:
+        ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+        STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
+      run: terraform init -backend-config="storage_account_name=$STORAGE_ACCOUNT"
     
     - name: terraform-validate
       id: validate
