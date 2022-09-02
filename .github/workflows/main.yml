@@ -39,7 +39,7 @@ jobs:
       env:
         ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
         STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
-      run: terraform init  -backend-config="key = $STATE_KEY"
+      run: terraform init # -backend-config="key = $STATE_KEY"
     
     - name: terraform-validate
       id: validate
