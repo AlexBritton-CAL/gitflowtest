@@ -33,8 +33,7 @@ jobs:
         ls -l
         terraform --version
         cat ../config/prod_backend.tf
-        ARM_ACCESS_KEY
-        export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
+        export ARM_ACCESS_KEY="${{ secrets.ARM_ACCESS_KEY }}"
 
     - name: terraform-fmt
       id: fmt
