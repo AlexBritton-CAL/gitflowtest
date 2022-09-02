@@ -2,6 +2,7 @@ terraform {
   backend "azurerm" {
     container_name = "tfstate"
     key = "gitflowtestPROD.tfstate"
+    storage_account_name = "terraformstateab2021"
   }
 }
 
