@@ -1,0 +1,60 @@
+name: validate-code
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    defaults:
+      run:
+        working-directory: ./terraform
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - uses: hashicorp/setup-terraform@v1
+      # with:
+      #   terraform_version: 0.13.0
+        
+    - name: terraform-fmt
+      id: fmt
+      run: terraform fmt
+      continue-on-error: true
+
+    # Runs a single command using the runners shell
+    - name: terraform-init
+      id: init
+      # env:
+      #   ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+      #   STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
+      #run: terraform init -backend-config="storage_account_name=$STORAGE_ACCOUNT"
+      run: terraform init -upgrade -backend-config=../config/prod_backend.tf -backend-config="key=prod_gitflowtest.tfstate"
+    
+    - name: terraform-validate
+      id: validate
+      run: terraform validate -no-color
+
+
+
+# name: "PROD/Firewall: Deployment"
+
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       tf_apply:
+#         description: type apply to run 'terraform apply'
+#         type: string
+#         required: false
+
+# jobs:
+#   deploy_firewall:
+#     uses: Calastone/Infra.AzureCore/.github/workflows/terraform_all_run.yaml@main
+#     with:
+#       config: prod
+#       runs_on: prod
+#       tf_apply: "${{ github.event.inputs.tf_apply }}"
+#       working_directory: firewall
+
