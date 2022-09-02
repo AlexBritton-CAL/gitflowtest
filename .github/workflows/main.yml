@@ -1,7 +1,9 @@
-name: validate-code
+name: 'terraform testing'
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   validate:
