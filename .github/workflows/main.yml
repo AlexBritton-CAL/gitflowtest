@@ -18,7 +18,11 @@ jobs:
     - uses: hashicorp/setup-terraform@v1
       # with:
       #   terraform_version: 0.13.0
-        
+
+    - name: Get system assigned managed identity and assign it ( MANUAL STEP )
+      run: |
+        ls -l
+
     - name: terraform-fmt
       id: fmt
       run: terraform fmt
