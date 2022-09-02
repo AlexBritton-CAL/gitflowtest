@@ -14,11 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
+
     - name: Log in with Azure
       uses: azure/login@v1
       with:
-        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        #creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        creds: '{"clientId":"${{ secrets.appId }}","clientSecret":"${{ secrets.password }}","subscriptionId":"ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2","tenantId":"${{ secrets.tenant }}"}'
     
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
