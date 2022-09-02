@@ -19,9 +19,11 @@ jobs:
       # with:
       #   terraform_version: 0.13.0
 
-    - name: Get system assigned managed identity and assign it ( MANUAL STEP )
+    - name: Tests
       run: |
         ls -l
+        terraform --version
+        cat ../config/prod_backend.tf
 
     - name: terraform-fmt
       id: fmt
