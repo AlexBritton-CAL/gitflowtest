@@ -8,11 +8,20 @@ jobs:
     defaults:
       run:
         working-directory: ./terraform
+    environment: PROD
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     steps:
+
+    - name: az login
+      run: |
+        az login --tenant ${{ secrets.TENANT }} \
+          --service-principal \
+          -u ${{ secrets.APPID }} \
+          -p ${{ secrets.PASSWORD }} >/dev/null
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - uses: hashicorp/setup-terraform@v1
