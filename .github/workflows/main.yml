@@ -20,6 +20,8 @@ jobs:
       ARM_SUBSCRIPTION_ID: "ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2"
       ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
       STATE_KEY: "GitFlowTestPROD.tfstate"
+      #BACKEND_FILE: ${{ github.workspace }}/${{ inputs.working_directory }}/../config/${{ inputs.config }}_backend.tf
+      BACKEND_FILE: prod_backend.tf
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -39,7 +41,7 @@ jobs:
       env:
         ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
         STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
-      run: terraform init # -backend-config="key = $STATE_KEY"
+      run: terraform init -backend-config=$BACKEND_FILE
     
     - name: terraform-validate
       id: validate
