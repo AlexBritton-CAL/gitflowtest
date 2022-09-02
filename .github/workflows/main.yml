@@ -19,6 +19,7 @@ jobs:
       ARM_TENANT_ID: "9c29d70b-9e7a-44d5-abe2-7e53df86502f"
       ARM_SUBSCRIPTION_ID: "ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2"
       ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+      STATE_KEY: "GitFlowTestPROD.tfstate"
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -38,7 +39,7 @@ jobs:
       env:
         ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
         STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
-      run: terraform init
+      run: terraform init  -backend-config="key = $STATE_KEY"
     
     - name: terraform-validate
       id: validate
