@@ -22,4 +22,5 @@ jobs:
     uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
     with:
       environment: PROD
+      config: prod
     secrets: inherit

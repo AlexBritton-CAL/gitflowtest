@@ -7,6 +7,10 @@ on:
         type: string
         description: repo environment
         required: true
+      config:
+        type: string
+        description: config/backend file name prefix
+        required: true
 
 jobs:
   run_terraform:
@@ -21,7 +25,7 @@ jobs:
       ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
       #STATE_KEY: "GitFlowTestPROD.tfstate"
       #BACKEND_FILE: ${{ github.workspace }}/${{ inputs.working_directory }}/../config/${{ inputs.config }}_backend.tf
-      BACKEND_FILE: ../config/prod_backend.yml
+      BACKEND_FILE: ../config/${{ inputs.config }}_backend.yml
       working-directory: ./terraform
 
     steps:
