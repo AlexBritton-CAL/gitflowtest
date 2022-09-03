@@ -48,7 +48,7 @@ jobs:
       id: init
       run: |
         cd ${{ env.working-directory }}
-        terraform init -backend-config=${{ env.BACKEND_FILE }} -backend-config="key=GitFlowTestPROD.tfstate"
+        terraform init -backend-config=${{ env.BACKEND_FILE }} -backend-config="key=GitFlowTest${{ inputs.environment }}.tfstate"
     
     - name: terraform-plan
       id: plan
