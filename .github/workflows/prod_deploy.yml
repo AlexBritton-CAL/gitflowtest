@@ -1,0 +1,10 @@
+name: "Prod_Deploy"
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  deploy:
+  uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main

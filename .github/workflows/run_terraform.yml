@@ -1,16 +1,11 @@
-name: 'terraform testing'
+name: 'run_terraform'
 
 on:
-  push:
-    branches:
-      - 'main'
+  workflow_call:
 
 jobs:
   validate:
     environment: PROD
-    defaults:
-      run:
-        working-directory: ./terraform
     runs-on: ubuntu-latest
 
     env:
@@ -22,6 +17,7 @@ jobs:
       STATE_KEY: "GitFlowTestPROD.tfstate"
       #BACKEND_FILE: ${{ github.workspace }}/${{ inputs.working_directory }}/../config/${{ inputs.config }}_backend.tf
       BACKEND_FILE: prod_backend.tf
+      working-directory: ./terraform
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
