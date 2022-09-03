@@ -33,8 +33,6 @@ jobs:
     - name: Log in with Azure
       uses: azure/login@v1
       with:
-        #creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        #environment: PROD
         creds: '{"clientId":"${{ secrets.appId }}","clientSecret":"${{ secrets.password }}","subscriptionId":"ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2","tenantId":"9c29d70b-9e7a-44d5-abe2-7e53df86502f"}'
     
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -44,9 +42,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: terraform-init
       id: init
-      # env:
-      #   ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
-      #   STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
       run: |
         cd ${{ env.working-directory }}
         terraform init 
@@ -59,7 +54,6 @@ jobs:
       #   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
       #   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       #   ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
-      # if: github.event_name == 'pull_request'
       run: |
         cd ${{ env.working-directory }}
         terraform plan -no-color
@@ -93,22 +87,13 @@ jobs:
     #         body: output
     #       })
 
-# name: "PROD/Firewall: Deployment"
-
-# on:
-#   workflow_dispatch:
-#     inputs:
-#       tf_apply:
-#         description: type apply to run 'terraform apply'
-#         type: string
-#         required: false
-
-# jobs:
-#   deploy_firewall:
-#     uses: Calastone/Infra.AzureCore/.github/workflows/terraform_all_run.yaml@main
-#     with:
-#       config: prod
-#       runs_on: prod
-#       tf_apply: "${{ github.event.inputs.tf_apply }}"
-#       working_directory: firewall
-
+    # - name: terraform-apply
+    #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    #   id: apply
+    #   env:
+    #     ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+    #     ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+    #     ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+    #     ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+    #     ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+    #   run: terraform apply -no-color -auto-approve

@@ -1,13 +1,17 @@
 name: "Prod_Deploy"
 
 on:
-  push:
-    branches:
-      - 'main'
+  [push, pull_request]:
+    paths:
+      - terraform/**
+      - config/prod_backend.yml
+  workflow_dispatch:
 
 jobs:
   deploy:
-    uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
-    with:
-      environment: PROD
-    secrets: inherit
+    steps:
+      if: github.event_name == 'pull_request'
+      uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
+      with:
+        environment: PROD
+      secrets: inherit
