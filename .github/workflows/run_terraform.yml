@@ -26,23 +26,16 @@ jobs:
       with:
         terraform_version: 0.13.0
         
-    - name: terraform-fmt
-      id: fmt
-      run: terraform fmt
-      continue-on-error: true
-
     # Runs a single command using the runners shell
     - name: terraform-init
       id: init
       env:
         ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
         STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
-      run: terraform init #-backend-config=$BACKEND_FILE
+      run: |
+        cd ${{ env.working-directory }}
+        terraform init #-backend-config=$BACKEND_FILE
     
-    - name: terraform-validate
-      id: validate
-      run: terraform validate -no-color
-
     - name: terraform-plan
       id: plan
       # env:
