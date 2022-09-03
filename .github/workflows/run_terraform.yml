@@ -3,7 +3,7 @@ name: 'run_terraform'
 on:
   workflow_call:
     inputs:
-      environment::
+      environment:
         type: string
         description: repo environment
         required: true
