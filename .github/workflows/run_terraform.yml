@@ -52,6 +52,7 @@ jobs:
       #   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       #   ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
       # if: github.event_name == 'pull_request'
+      run: cd $working-directory
       run: terraform plan -no-color
 
     # - name: add-plan-comment
