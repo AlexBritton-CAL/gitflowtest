@@ -13,9 +13,7 @@ on:
 
 jobs:
   deploy:
-    steps:
-      if: github.event_name == 'pull_request'
-      uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
-      with:
-        environment: PROD
-      secrets: inherit
+    uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
+    with:
+      environment: PROD
+    secrets: inherit
