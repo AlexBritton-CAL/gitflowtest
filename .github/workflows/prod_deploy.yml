@@ -1,16 +1,16 @@
 name: "Prod_Deploy"
 
 on:
-  push:
+  [push, pull_request]:
     paths:
       - terraform/**
       - config/prod_backend.yml
       - .github/workflows/prod_deploy.yml
-  pull_request:
-    paths:
-      - terraform/**
-      - config/prod_backend.yml
-      - .github/workflows/prod_deploy.yml
+  # pull_request:
+  #   paths:
+  #     - terraform/**
+  #     - config/prod_backend.yml
+  #     - .github/workflows/prod_deploy.yml
   workflow_dispatch:
 
 jobs:
