@@ -1,7 +1,11 @@
 name: "Prod_Deploy"
 
 on:
-  [push, pull_request]:
+  push:
+    paths:
+      - terraform/**
+      - config/prod_backend.yml
+  pull_request:
     paths:
       - terraform/**
       - config/prod_backend.yml
