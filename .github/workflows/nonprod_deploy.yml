@@ -1,25 +1,27 @@
-name: "Prod_Deploy"
+name: "NonProd_Deploy"
 
 on:
   push:
     paths:
       - terraform/**
-      - config/prod_backend.yml
-      - .github/workflows/prod_deploy.yml
+      - config/nonprod_backend.yml
+      - .github/workflows/nonprod_deploy.yml
     branches:
-      - main
+      - nooprod
+
   pull_request:
     paths:
       - terraform/**
-      - config/prod_backend.yml
-      - .github/workflows/prod_deploy.yml
+      - config/nonprod_backend.yml
+      - .github/workflows/nonprod_deploy.yml
     branches:
-      - main
+      - nooprod
+
   workflow_dispatch:
 
 jobs:
   deploy:
     uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
     with:
-      environment: PROD
+      environment: NONPROD
     secrets: inherit
