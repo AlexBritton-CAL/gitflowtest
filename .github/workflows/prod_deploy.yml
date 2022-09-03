@@ -23,4 +23,5 @@ jobs:
     with:
       environment: PROD
       config: prod
+      working_directory: terraform
     secrets: inherit

@@ -11,6 +11,10 @@ on:
         type: string
         description: config/backend file name prefix
         required: true
+      working_directory:
+        type: string
+        description:
+        required: true
 
 jobs:
   run_terraform:
@@ -23,10 +27,9 @@ jobs:
       ARM_TENANT_ID: "9c29d70b-9e7a-44d5-abe2-7e53df86502f"
       ARM_SUBSCRIPTION_ID: "ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2"
       ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
-      #STATE_KEY: "GitFlowTestPROD.tfstate"
       #BACKEND_FILE: ${{ github.workspace }}/${{ inputs.working_directory }}/../config/${{ inputs.config }}_backend.tf
       BACKEND_FILE: ../config/${{ inputs.config }}_backend.yml
-      working-directory: ./terraform
+      working-directory: ./${{ inputs.working_directory }}
 
     steps:
 
@@ -48,7 +51,7 @@ jobs:
       id: init
       run: |
         cd ${{ env.working-directory }}
-        terraform init -backend-config=${{ env.BACKEND_FILE }} -backend-config="key=GitFlowTest${{ inputs.environment }}.tfstate"
+        terraform init -backend-config=${{ env.BACKEND_FILE }} -backend-config="key=${{ inputs.working_directory }}${{ inputs.environment }}.tfstate"
     
     - name: terraform-plan
       id: plan
