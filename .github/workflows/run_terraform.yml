@@ -44,9 +44,9 @@ jobs:
     # Runs a single command using the runners shell
     - name: terraform-init
       id: init
-      env:
-        ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
-        STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
+      # env:
+      #   ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+      #   STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
       run: |
         cd ${{ env.working-directory }}
         terraform init 
