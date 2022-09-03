@@ -54,7 +54,7 @@ jobs:
       # if: github.event_name == 'pull_request'
       run: |
         cd ${{ env.working-directory }}
-        run: terraform plan -no-color
+        terraform plan -no-color
 
     # - name: add-plan-comment
     #   id: comment
