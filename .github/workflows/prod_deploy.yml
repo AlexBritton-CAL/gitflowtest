@@ -5,6 +5,7 @@ on:
     paths:
       - terraform/**
       - config/prod_backend.yml
+      - .github/workflow/prod.depoy.yml
   pull_request:
     paths:
       - terraform/**
