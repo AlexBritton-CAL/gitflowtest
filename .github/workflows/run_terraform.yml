@@ -25,8 +25,8 @@ jobs:
       uses: azure/login@v1
       with:
         #creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        environment: PROD
-        creds: '{"clientId":"${{ secrets.appId }}","clientSecret":"${{ secrets.password }}","subscriptionId":"ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2","tenantId":"${{ secrets.tenant }}"}'
+        #environment: PROD
+        creds: '{"clientId":"${{ secrets.appId }}","clientSecret":"${{ secrets.password }}","subscriptionId":"ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2","tenantId":"9c29d70b-9e7a-44d5-abe2-7e53df86502f"}'
     
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
