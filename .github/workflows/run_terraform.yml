@@ -2,10 +2,15 @@ name: 'run_terraform'
 
 on:
   workflow_call:
+    inputs:
+      environment::
+        type: string
+        description: repo environment
+        required: true
 
 jobs:
   run_terraform:
-    environment: PROD
+    environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
 
     env:
@@ -23,7 +28,7 @@ jobs:
 
     - name: testoutput
       run: |
-        echo ${{ env.working-directory }}/../config/${{ env.environment }}_backend.tf
+        echo ${{ env.working-directory }}/../config/${{ inputs.environment }}_backend.tf
 
     - name: Log in with Azure
       uses: azure/login@v1
