@@ -21,7 +21,7 @@ jobs:
       ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
       #STATE_KEY: "GitFlowTestPROD.tfstate"
       #BACKEND_FILE: ${{ github.workspace }}/${{ inputs.working_directory }}/../config/${{ inputs.config }}_backend.tf
-      BACKEND_FILE: prod_backend.yml
+      BACKEND_FILE: ../config/prod_backend.yml
       working-directory: ./terraform
 
     steps:
