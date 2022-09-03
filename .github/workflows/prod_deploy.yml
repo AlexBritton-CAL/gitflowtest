@@ -7,4 +7,4 @@ on:
 
 jobs:
   deploy:
-  uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
+    uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
