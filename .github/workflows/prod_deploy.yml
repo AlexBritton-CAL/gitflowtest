@@ -3,14 +3,14 @@ name: "Prod_Deploy"
 on:
   push:
     paths:
-      - terraform/**
+      - gitflowterraform/**
       - config/prod_backend.yml
       - .github/workflows/prod_deploy.yml
     branches:
       - main
   pull_request:
     paths:
-      - terraform/**
+      - gitflowterraform/**
       - config/prod_backend.yml
       - .github/workflows/prod_deploy.yml
     branches:
@@ -23,5 +23,5 @@ jobs:
     with:
       environment: PROD
       config: prod
-      working_directory: terraform
+      working_directory: gitflowterraform
     secrets: inherit
