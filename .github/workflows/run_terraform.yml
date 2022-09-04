@@ -67,7 +67,10 @@ jobs:
     
     - name: Summary
       run: |
-        echo "Summary Title" >> $GITHUB_STEP_SUMMARY
+        echo "## Summary Title" >> $GITHUB_STEP_SUMMARY
+        echo "Line1:" >> $GITHUB_STEP_SUMMARY
+        echo "Line2:" >> $GITHUB_STEP_SUMMARY
+        echo "Line3:" >> $GITHUB_STEP_SUMMARY
 
     # - name: add-plan-comment
     #   id: comment
