@@ -12,7 +12,7 @@ provider "azurerm" {
 }
 
 locals {
-  config_content = file("../config/${var.config_name}.yaml")
+  config_content = file("../config/${var.config_name}.yml")
   config                = yamldecode(local.config_content)
 }
 

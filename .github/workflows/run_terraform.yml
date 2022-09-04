@@ -32,7 +32,6 @@ jobs:
       working-directory: ./${{ inputs.working_directory }}
       TF_VAR_config_name: ${{ inputs.config }}
 
-
     steps:
 
     - name: testoutput
