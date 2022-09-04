@@ -11,9 +11,18 @@ provider "azurerm" {
     features {}
 }
 
-resource "azurerm_resource_group" "example" {
+locals {
+  config_content = file("../config/${local.config_name}.yaml")
+  config                = yamldecode(local.config_content)
+}
+
+data "azurerm_resource_group" "example" {
   name     = "example"
   location = "West Europe"
 }
 
  # comment
+
+output config {
+  value = local.config
+}

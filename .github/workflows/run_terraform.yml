@@ -30,6 +30,8 @@ jobs:
       #BACKEND_FILE: ${{ github.workspace }}/${{ inputs.working_directory }}/../config/${{ inputs.config }}_backend.tf
       BACKEND_FILE: ../config/${{ inputs.config }}_backend.yml
       working-directory: ./${{ inputs.working_directory }}
+      TF_VAR_config_name: ${{ inputs.config }}
+
 
     steps:
 
