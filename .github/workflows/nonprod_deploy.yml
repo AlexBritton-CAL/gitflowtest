@@ -5,6 +5,7 @@ on:
     paths:
       - gitflowterraform/**
       - config/nonprod_backend.yml
+      - config/nonprod.yml
       - .github/workflows/nonprod_deploy.yml
     branches:
       - main
@@ -13,6 +14,7 @@ on:
     paths:
       - gitflowterraform/**
       - config/nonprod_backend.yml
+      - config/nonprod.yml
       - .github/workflows/nonprod_deploy.yml
     branches:
       - main

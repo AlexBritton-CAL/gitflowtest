@@ -5,6 +5,7 @@ on:
     paths:
       - gitflowterraform/**
       - config/prod_backend.yml
+      - config/prod.yml
       - .github/workflows/prod_deploy.yml
     branches:
       - main
@@ -13,6 +14,7 @@ on:
     paths:
       - gitflowterraform/**
       - config/prod_backend.yml
+      - config/prod.yml
       - .github/workflows/prod_deploy.yml
     branches:
       - main
