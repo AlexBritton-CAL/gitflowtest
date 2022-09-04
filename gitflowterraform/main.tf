@@ -22,5 +22,5 @@ data "azurerm_resource_group" "example" {
 
 resource "azurerm_private_dns_zone" "example" {
   name                = "ab${var.config_name}.local"
-  resource_group_name = azurerm_resource_group.example.name
+  resource_group_name = data.azurerm_resource_group.example.name
 }
