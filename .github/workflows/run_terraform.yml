@@ -66,8 +66,8 @@ jobs:
         terraform plan -no-color
     
     - name: Summary
-    run: |
-      echo "Summary Title" >> $GITHUB_STEP_SUMMARY
+      run: |
+        echo "Summary Title" >> $GITHUB_STEP_SUMMARY
 
     # - name: add-plan-comment
     #   id: comment
