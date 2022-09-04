@@ -17,8 +17,7 @@ locals {
 }
 
 data "azurerm_resource_group" "example" {
-  name     = "example"
-  location = "West Europe"
+  name     = local.config.rgname
 }
 
  # comment
