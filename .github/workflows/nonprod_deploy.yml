@@ -3,19 +3,19 @@ name: "NonProd_Deploy"
 on:
   push:
     paths:
-      - terraform/**
+      - gitflowterraform/**
       - config/nonprod_backend.yml
       - .github/workflows/nonprod_deploy.yml
     branches:
-      - nonprod
+      - main
 
   pull_request:
     paths:
-      - terraform/**
+      - gitflowterraform/**
       - config/nonprod_backend.yml
       - .github/workflows/nonprod_deploy.yml
     branches:
-      - nonprod
+      - main
 
   workflow_dispatch:
 
@@ -24,4 +24,7 @@ jobs:
     uses: Oddjob62/gitflowtest/.github/workflows/run_terraform.yml@main
     with:
       environment: NONPROD
+      config: nonprod
+      working_directory: gitflowterraform
+
     secrets: inherit
