@@ -41,6 +41,7 @@ resource "azurerm_virtual_network" "example" {
   subnet {
     name           = "subnet1"
     address_prefix = "10.0.1.0/24"
+    private_link_service_network_policies_enabled = true
   }
 
   subnet {
