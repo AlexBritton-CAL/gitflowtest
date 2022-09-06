@@ -39,7 +39,7 @@ resource "azurerm_virtual_network" "example" {
   dns_servers         = ["10.0.0.4", "10.0.0.5"]
 }
 
-resource "azurerm_subnet" "example" {
+resource "azurerm_subnet" "example1" {
   name                 = "example-subnet1"
   resource_group_name  = data.azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
@@ -47,7 +47,7 @@ resource "azurerm_subnet" "example" {
   private_link_service_network_policies_enabled = true
 }
 
-resource "azurerm_subnet" "example" {
+resource "azurerm_subnet" "example2" {
   name                 = "example-subnet2"
   resource_group_name  = data.azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
