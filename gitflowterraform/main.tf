@@ -44,7 +44,7 @@ resource "azurerm_subnet" "example1" {
   resource_group_name  = data.azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = local.config.subnet1
-  private_link_service_network_policies_enabled = true
+  private_link_service_network_policies_enabled = false
 }
 
 resource "azurerm_subnet" "example2" {
@@ -52,5 +52,5 @@ resource "azurerm_subnet" "example2" {
   resource_group_name  = data.azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = local.config.subnet2
-  private_link_service_network_policies_enabled = false
+  private_link_service_network_policies_enabled = true
 }
