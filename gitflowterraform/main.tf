@@ -45,7 +45,7 @@ resource "azurerm_subnet" "example1" {
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = local.config.subnet1
   #private_link_service_network_policies_enabled = true
-  enforce_private_link_endpoint_network_policies = false
+  enforce_private_link_endpoint_network_policies = true
 }
 
 resource "azurerm_subnet" "example2" {
