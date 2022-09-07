@@ -2,5 +2,5 @@
 
 rgname: GitflowTestNONPROD
 
-subnet1: "10.0.3.0/24"
-subnet2: "10.0.4.0/24"
+subnet1: ["10.0.3.0/24"]
+subnet2: ["10.0.4.0/24"]
