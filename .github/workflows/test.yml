@@ -15,12 +15,12 @@ jobs:
       - name: TestStep
         shell: bash
         run: |
-        if [[ "${{ inputs.disable_ssh }}" ]]
-        then
-          echo "Disable SSH"
-        else
-          echo "Do NOT disable SSH"
-        fi
+          if [[ "${{ inputs.disable_ssh }}" ]]
+          then
+            echo "Disable SSH"
+          else
+            echo "Do NOT disable SSH"
+          fi
 
 
 git config --global user.email=alex@ahbritton.com
