@@ -18,33 +18,33 @@ jobs:
           RUNNER_TEMP="./"
           if ${{ inputs.enable_ssh }}
           then
-            # cloud init script to register runner with GH
-            START_SCRIPT=$RUNNER_TEMP/init.txt
-            cat <<EOT > $START_SCRIPT
-            #!/bin/bash
-            echo starting
-            sudo -i -u runner bash << EOF
-            cd ~
-            cd actions-runner
-            ./config.sh --unattended --url https://github.com/enterprises/123 --token 123 --labels !23 --runnergroup 123
-            sudo ./svc.sh install
-            sudo ./svc.sh start
-            EOF
-            EOT
+          # cloud init script to register runner with GH
+          START_SCRIPT=$RUNNER_TEMP/init.txt
+          cat <<EOT > $START_SCRIPT
+          #!/bin/bash
+          echo starting
+          sudo -i -u runner bash << EOF
+          cd ~
+          cd actions-runner
+          ./config.sh --unattended --url https://github.com/enterprises/123 --token 123 --labels !23 --runnergroup 123
+          sudo ./svc.sh install
+          sudo ./svc.sh start
+          EOF
+          EOT
           else
-            # cloud init script to register runner with GH
-            START_SCRIPT=$RUNNER_TEMP/init.txt
-            cat <<EOT > $START_SCRIPT
-            #!/bin/bash
-            echo starting
-            sudo -i -u runner bash << EOF
-            cd ~
-            cd actions-runner
-            ./config.sh --unattended --url https://github.com/enterprises/123 --token 123 --labels 123 --runnergroup 123
-            sudo ./svc.sh install
-            sudo ./svc.sh start
-            EOF
-            EOT
+          # cloud init script to register runner with GH
+          START_SCRIPT=$RUNNER_TEMP/init.txt
+          cat <<EOT > $START_SCRIPT
+          #!/bin/bash
+          echo starting
+          sudo -i -u runner bash << EOF
+          cd ~
+          cd actions-runner
+          ./config.sh --unattended --url https://github.com/enterprises/123 --token 123 --labels 123 --runnergroup 123
+          sudo ./svc.sh install
+          sudo ./svc.sh start
+          EOF
+          EOT
           fi
 
           ls -l
