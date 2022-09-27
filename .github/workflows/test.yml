@@ -43,6 +43,8 @@ jobs:
           ./config.sh --unattended --url https://github.com/enterprises/123 --token 123 --labels 123 --runnergroup 123
           sudo ./svc.sh install
           sudo ./svc.sh start
+          sudo apt -y remove walinuxagent
+          sudo apt -y remove openssh-client
           EOF
           EOT
           fi
