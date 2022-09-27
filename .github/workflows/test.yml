@@ -1,7 +1,7 @@
 name: "testworkflow"
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       disable_ssh:
         type: boolean
