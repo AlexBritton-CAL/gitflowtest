@@ -16,6 +16,7 @@ jobs:
         shell: bash
         run: |
         if [[ ${{ inputs.disable_ssh }} ]]
+        then
           echo "Disable SSH"
         else
           echo "Do NOT disable SSH"
