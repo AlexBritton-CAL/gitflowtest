@@ -1,0 +1,21 @@
+name: "testworkflow"
+
+on:
+  workflow_call:
+    inputs:
+      disable_ssh:
+        type: boolean
+        required: false
+        default: true
+
+jobs:
+  Test_Bash:
+    steps:
+      - name: TestStep
+      shell: bash
+      run: |
+      if [[ ${{ inputs.disable_ssh }} ]]
+        echo "Disable SSH"
+      else
+        echo "Do NOT disable SSH"
+      fi
