@@ -10,6 +10,7 @@ on:
 
 jobs:
   Test_Bash:
+    runs-on: ubuntu-latest
     steps:
       - name: TestStep
       shell: bash
@@ -19,3 +20,7 @@ jobs:
       else
         echo "Do NOT disable SSH"
       fi
+
+
+git config --global user.email=alex@ahbritton.com
+git config --global user.name=Alex Britton
