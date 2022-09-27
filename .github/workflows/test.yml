@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: TestStep
-      shell: bash
-      run: |
-      if [[ ${{ inputs.disable_ssh }} ]]
-        echo "Disable SSH"
-      else
-        echo "Do NOT disable SSH"
-      fi
+        shell: bash
+        run: |
+        if [[ ${{ inputs.disable_ssh }} ]]
+          echo "Disable SSH"
+        else
+          echo "Do NOT disable SSH"
+        fi
 
 
 git config --global user.email=alex@ahbritton.com
