@@ -15,9 +15,38 @@ jobs:
       - name: TestStep
         shell: bash
         run: |
+          RUNNER_TEMP="./"
           if ${{ inputs.enable_ssh }}
           then
-            echo "Enable SSH"
+            # cloud init script to register runner with GH
+            START_SCRIPT=$RUNNER_TEMP/init.txt
+            cat <<EOT > $START_SCRIPT
+            #!/bin/bash
+            echo starting
+            sudo -i -u runner bash << EOF
+            cd ~
+            cd actions-runner
+            ./config.sh --unattended --url https://github.com/enterprises/calastone --token ${{ secrets.registration_token }} --labels ${{ inputs.environment_label }} --runnergroup ${{ inputs.runner_group }}
+            sudo ./svc.sh install
+            sudo ./svc.sh start
+            EOF
+            EOT
           else
-            echo "Disable SSH"
+            # cloud init script to register runner with GH
+            START_SCRIPT=$RUNNER_TEMP/init.txt
+            cat <<EOT > $START_SCRIPT
+            #!/bin/bash
+            echo starting
+            sudo -i -u runner bash << EOF
+            cd ~
+            cd actions-runner
+            ./config.sh --unattended --url https://github.com/enterprises/calastone --token ${{ secrets.registration_token }} --labels ${{ inputs.environment_label }} --runnergroup ${{ inputs.runner_group }}
+            sudo ./svc.sh install
+            sudo ./svc.sh start
+            EOF
+            EOT
           fi
+
+          ls -l
+
+          cat $RUNNER_TEMP/init.txt
