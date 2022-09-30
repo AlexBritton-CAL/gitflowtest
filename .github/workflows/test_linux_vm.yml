@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-latest
 
       env:
-        #ARM_CLIENT_ID: ${{ secrets.APPID }}
-        #ARM_CLIENT_SECRET: ${{ secrets.PASSWORD }}
-        #ARM_TENANT_ID: "9c29d70b-9e7a-44d5-abe2-7e53df86502f"
-        #ARM_SUBSCRIPTION_ID: "ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2"
-        #ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
-        #working-directory: ./test_linux_vm
+        ARM_CLIENT_ID: ${{ secrets.APPID }}
+        ARM_CLIENT_SECRET: ${{ secrets.PASSWORD }}
+        ARM_TENANT_ID: "9c29d70b-9e7a-44d5-abe2-7e53df86502f"
+        ARM_SUBSCRIPTION_ID: "ff65e97e-c6be-4f35-b6b7-e52ce88bf5b2"
+        ARM_SAS_TOKEN: ${{ secrets.ARM_SAS_TOKEN }}
+        working-directory: ./test_linux_vm
 
     steps:
 
