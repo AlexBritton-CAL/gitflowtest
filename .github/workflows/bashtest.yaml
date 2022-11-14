@@ -1,0 +1,13 @@
+name: "bashtest"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Test_Bash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: TestBash
+        shell: bash
+        run: |
+          ping www.google.com -c 5
