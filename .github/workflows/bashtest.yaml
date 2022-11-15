@@ -14,7 +14,9 @@ jobs:
       - name: TestBash
         shell: bash
         run: |
+          echo "Before Secret"
           echo $SECRET_VALUE
+          echo "After Secret"
         env:
           SECRET_VALUE: ${{secrets[github.event.inputs.secret_input]}}
     
